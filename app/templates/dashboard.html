@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Dashboard</h1>
+    <div class="page-subtitle">Your financial overview for this month</div>
+  </div>
+  <button class="btn btn-primary" onclick="openAddTransactionModal()">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+    Add Transaction
+  </button>
+</div>
+
+<div class="stat-grid" id="statGrid">
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+</div>
+
+<div class="chart-grid">
+  <div class="card card-pad">
+    <div class="section-title">Income vs Expenses</div>
+    <div class="section-subtitle">Last 6 months</div>
+    <canvas id="trendChart" height="130"></canvas>
+  </div>
+  <div class="card card-pad">
+    <div class="section-title">Expense Breakdown</div>
+    <div class="section-subtitle">This month by category</div>
+    <canvas id="breakdownChart" height="130"></canvas>
+    <div id="breakdownEmpty" class="hidden text-muted" style="text-align:center;padding:40px 0;font-size:13px;">No expenses recorded this month yet.</div>
+  </div>
+</div>
+
+<div class="chart-grid">
+  <div class="card card-pad">
+    <div class="section-title">Cash Flow</div>
+    <div class="section-subtitle">Account balance movement over time</div>
+    <canvas id="cashFlowChart" height="110"></canvas>
+  </div>
+  <div class="card card-pad">
+    <div class="flex-between mb-16">
+      <div>
+        <div class="section-title" style="margin-bottom:0;">Budget Overview</div>
+        <div class="section-subtitle" style="margin-bottom:0;">This month's spending vs limits</div>
+      </div>
+    </div>
+    <div id="budgetOverview"><div class="skeleton" style="height:120px;"></div></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}

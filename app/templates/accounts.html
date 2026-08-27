@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Accounts{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Accounts</h1>
+    <div class="page-subtitle">Your banks, cash, and cards in one view</div>
+  </div>
+  <div class="flex gap-8">
+    <button class="btn btn-secondary" id="transferBtn">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 21l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      Transfer Money
+    </button>
+    <button class="btn btn-primary" id="addAccountBtn">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      Add Account
+    </button>
+  </div>
+</div>
+
+<div id="accountsGrid" class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="card card-pad"><div class="skeleton" style="height:90px;"></div></div>
+  <div class="card card-pad"><div class="skeleton" style="height:90px;"></div></div>
+  <div class="card card-pad"><div class="skeleton" style="height:90px;"></div></div>
+</div>
+
+<div id="accountsEmpty" class="hidden empty-state">
+  <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+  <h3>No accounts yet</h3>
+  <p>Add your first bank, cash, or card account to start tracking balances.</p>
+  <button class="btn btn-primary" id="emptyAddAccountBtn">Add Account</button>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/accounts.js"></script>
+{% endblock %}

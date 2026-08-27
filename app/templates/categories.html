@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Categories</h1>
+    <div class="page-subtitle">Organize your income and expenses</div>
+  </div>
+  <button class="btn btn-primary" id="addCategoryBtn">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+    New Category
+  </button>
+</div>
+
+<div class="chart-grid" style="grid-template-columns: 1fr 1fr;">
+  <div class="card card-pad">
+    <div class="section-title">Expense Categories</div>
+    <div id="expenseCategories" class="mt-16"><div class="skeleton" style="height:200px;"></div></div>
+  </div>
+  <div class="card card-pad">
+    <div class="section-title">Income Categories</div>
+    <div id="incomeCategories" class="mt-16"><div class="skeleton" style="height:200px;"></div></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/categories.js"></script>
+{% endblock %}

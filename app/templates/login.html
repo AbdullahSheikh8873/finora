@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block auth_content %}
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-seal" style="width:44px;height:44px;font-size:19px;">F</div>
+      <div class="auth-welcome">Welcome back</div>
+      <div class="auth-subtext">Sign in to manage your finances</div>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="field-label">Email</label>
+        <input type="email" class="field-input" id="email" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label class="field-label">Password</label>
+        <input type="password" class="field-input" id="password" required autocomplete="current-password" />
+      </div>
+      <div id="formError" class="field-error hidden"></div>
+      <button type="submit" class="btn btn-primary btn-block mt-16" id="submitBtn">Sign in</button>
+    </form>
+    <div class="auth-switch">Don't have an account? <a href="/register">Create one</a></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const errorEl = document.getElementById('formError');
+  errorEl.classList.add('hidden');
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
+  try {
+    await Finora.api('/api/auth/login', {
+      method: 'POST',
+      body: { email: document.getElementById('email').value, password: document.getElementById('password').value }
+    });
+    window.location.href = '/dashboard';
+  } catch (err) {
+    errorEl.textContent = err.message || 'Unable to sign in.';
+    errorEl.classList.remove('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
+  }
+});
+</script>
+{% endblock %}

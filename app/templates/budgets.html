@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Budgets{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Budgets</h1>
+    <div class="page-subtitle">Set spending limits by category and track them live</div>
+  </div>
+  <div class="flex gap-8" style="align-items:center;">
+    <select class="field-select" id="monthSelect"></select>
+    <button class="btn btn-primary" id="addBudgetBtn">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      New Budget
+    </button>
+  </div>
+</div>
+
+<div id="budgetsGrid" class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="card card-pad"><div class="skeleton" style="height:100px;"></div></div>
+  <div class="card card-pad"><div class="skeleton" style="height:100px;"></div></div>
+  <div class="card card-pad"><div class="skeleton" style="height:100px;"></div></div>
+</div>
+
+<div id="budgetsEmpty" class="hidden empty-state">
+  <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+  <h3>No budgets for this period</h3>
+  <p>Set a monthly limit for a category to start tracking your spending against it.</p>
+  <button class="btn btn-primary" id="emptyAddBudgetBtn">Create a Budget</button>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/budgets.js"></script>
+{% endblock %}

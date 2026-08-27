@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Settings</h1>
+    <div class="page-subtitle">Manage your profile, security, and preferences</div>
+  </div>
+</div>
+
+<div class="chart-grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
+  <div class="card card-pad mb-16">
+    <div class="section-title">Profile</div>
+    <div class="section-subtitle">Your name and email address</div>
+    <form id="profileForm">
+      <div class="form-group">
+        <label class="field-label">Full Name</label>
+        <input type="text" class="field-input" id="profileName" value="{{ user.full_name }}" required />
+      </div>
+      <div class="form-group">
+        <label class="field-label">Email</label>
+        <input type="email" class="field-input" id="profileEmail" value="{{ user.email }}" required />
+      </div>
+      <div id="profileError" class="field-error hidden"></div>
+      <button type="submit" class="btn btn-primary">Save Profile</button>
+    </form>
+  </div>
+
+  <div class="card card-pad mb-16">
+    <div class="section-title">Preferences</div>
+    <div class="section-subtitle">Currency, date format, and theme</div>
+    <form id="prefsForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="field-label">Currency</label>
+          <select class="field-select" id="prefCurrency">
+            <option value="PKR" {% if user.currency == 'PKR' %}selected{% endif %}>PKR</option>
+            <option value="USD" {% if user.currency == 'USD' %}selected{% endif %}>USD</option>
+            <option value="EUR" {% if user.currency == 'EUR' %}selected{% endif %}>EUR</option>
+            <option value="GBP" {% if user.currency == 'GBP' %}selected{% endif %}>GBP</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="field-label">Date Format</label>
+          <select class="field-select" id="prefDateFormat">
+            <option value="DD MMM YYYY" {% if user.date_format == 'DD MMM YYYY' %}selected{% endif %}>DD MMM YYYY</option>
+            <option value="MM/DD/YYYY" {% if user.date_format == 'MM/DD/YYYY' %}selected{% endif %}>MM/DD/YYYY</option>
+            <option value="YYYY-MM-DD" {% if user.date_format == 'YYYY-MM-DD' %}selected{% endif %}>YYYY-MM-DD</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Theme</label>
+        <select class="field-select" id="prefTheme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      <div id="prefsError" class="field-error hidden"></div>
+      <button type="submit" class="btn btn-primary">Save Preferences</button>
+    </form>
+  </div>
+
+  <div class="card card-pad mb-16">
+    <div class="section-title">Security</div>
+    <div class="section-subtitle">Change your password</div>
+    <form id="passwordForm">
+      <div class="form-group">
+        <label class="field-label">Current Password</label>
+        <input type="password" class="field-input" id="currentPassword" required />
+      </div>
+      <div class="form-group">
+        <label class="field-label">New Password</label>
+        <input type="password" class="field-input" id="newPassword" required />
+      </div>
+      <div class="form-group">
+        <label class="field-label">Confirm New Password</label>
+        <input type="password" class="field-input" id="confirmNewPassword" required />
+      </div>
+      <div id="passwordError" class="field-error hidden"></div>
+      <button type="submit" class="btn btn-primary">Change Password</button>
+    </form>
+  </div>
+
+  <div class="card card-pad mb-16" style="border-color:var(--color-danger);">
+    <div class="section-title" style="color:var(--color-danger);">Danger Zone</div>
+    <div class="section-subtitle">Permanently delete your account and all associated data</div>
+    <button class="btn btn-danger" id="deleteAccountBtn">Delete My Account</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/settings.js"></script>
+{% endblock %}

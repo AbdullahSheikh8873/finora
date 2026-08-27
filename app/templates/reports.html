@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Reports</h1>
+    <div class="page-subtitle">Deep dive into your financial performance</div>
+  </div>
+  <div class="flex gap-8">
+    <select class="field-select" id="periodSelect">
+      <option value="this_month">This month</option>
+      <option value="last_month">Last month</option>
+      <option value="last_3_months">Last 3 months</option>
+      <option value="last_6_months">Last 6 months</option>
+      <option value="this_year">This year</option>
+      <option value="custom">Custom range</option>
+    </select>
+    <input type="date" class="field-input hidden" id="customFrom" />
+    <input type="date" class="field-input hidden" id="customTo" />
+  </div>
+</div>
+
+<div class="stat-grid" id="reportStats">
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+  <div class="stat-card"><div class="skeleton" style="height:70px;"></div></div>
+</div>
+
+<div class="card card-pad">
+  <div class="section-title">Expense Categories</div>
+  <div class="section-subtitle">Breakdown for the selected period</div>
+  <canvas id="reportBreakdownChart" height="90"></canvas>
+  <div id="reportBreakdownEmpty" class="hidden text-muted" style="text-align:center;padding:40px 0;font-size:13px;">No expenses recorded for this period.</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/reports.js"></script>
+{% endblock %}
