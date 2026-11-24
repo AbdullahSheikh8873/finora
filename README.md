@@ -4,6 +4,10 @@ Finora is a full-stack financial management platform: accounts, transactions,
 transfers, budgets, dashboards, and reports, backed by PostgreSQL with a
 FastAPI + Jinja2 server-rendered UI.
 
+## Demo
+
+https://github.com/user-attachments/assets/261d9fa7-e7d9-46f0-b7fc-3b70dd59fb59
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
