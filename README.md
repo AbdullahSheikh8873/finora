@@ -6,7 +6,7 @@ FastAPI + Jinja2 server-rendered UI.
 
 ## Demo
 
-https://github.com/user-attachments/assets/261d9fa7-e7d9-46f0-b7fc-3b70dd59fb59
+https://github.com/user-attachments/assets/8dde6a5b-2624-45ea-9101-6f632a1a2f0b
 
 ## Table of Contents
 
