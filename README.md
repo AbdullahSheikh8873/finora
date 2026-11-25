@@ -2,8 +2,6 @@
 
 Finora is a full-stack personal finance app: accounts, transactions, transfers, budgets, dashboards and reports. It runs on FastAPI + PostgreSQL with a server-rendered Jinja2 UI, and is deployed on AWS EC2 using Docker, Amazon ECR and Nginx.
 
-![Finora architecture](docs/finora-architecture.png)
-
 ## Demo
 
 ▶ Demo video: https://github.com/user-attachments/assets/8dde6a5b-2624-45ea-9101-6f632a1a2f0b
